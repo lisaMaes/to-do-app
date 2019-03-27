@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TodoItem} from "../model/TodoItem";
 
 @Component({
@@ -11,10 +11,12 @@ export class TodoItemComponent implements OnInit {
   @Input()
   todo:TodoItem;
 
+  @Output()
+  TaskUpdated:EventEmitter<TodoItem> = new EventEmitter<TodoItem>();
 
-  handleEndItem(todo){
 
-    todo.isDone = !todo.isDone;
+  handleUpdateTask(todo:TodoItem){
+    this.TaskUpdated.emit(todo);
 
   }
 

@@ -16,9 +16,7 @@ export class TodoFormComponent implements OnInit {
 
   handleClick(title){
 
-    let todo:TodoItem= new TodoItem(title, false);
-
-    this.TaskAdded.emit(todo);
+    this.TaskAdded.emit(title);
   }
 
   handleReset(){

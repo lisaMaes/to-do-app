@@ -16,8 +16,6 @@ export class CheckboxComponent implements OnInit {
   endItem() {
 
     this.ItemFinished.emit(this.todo);
-
-
   }
 
   constructor() { }
