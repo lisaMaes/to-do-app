@@ -1,0 +1,15 @@
+
+
+<div [ngSwitch]="todos.length">
+
+  <div *ngSwitchCase="0">Il n'y a aucune tâche pour le moment</div>
+  <div *ngSwitchCase="1">Il y a 1 tâche à effectuer</div>
+  <div *ngSwitchDefault>Il y a {{todos.length}} tâches à effectuer</div>
+
+</div>
+
+<ul>
+  <li *ngFor="let todo of todos; index as i">
+    <app-todo-item [todo]="todo"></app-todo-item>
+  </li>
+</ul>

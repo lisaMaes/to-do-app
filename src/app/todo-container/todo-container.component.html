@@ -1,0 +1,6 @@
+<app-todo-form
+    (TaskAdded)="handleAddTask($event)"
+    (ListRested)="handleResetAll()"
+></app-todo-form>
+
+<app-todo-list [todos]="todos"></app-todo-list>

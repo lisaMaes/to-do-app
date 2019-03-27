@@ -1,0 +1,10 @@
+<div class="formAdd">
+
+  <div class="form-group">
+    <label for="inputAdd">Nouvelle Tâche</label>
+    <input #customVariable type="text" class="form-control" id="inputAdd" placeholder="Titre de la nouvelle tâche">
+  </div>
+  <button (click)="handleClick(customVariable.value)" type="submit" class="btn btn-info">Ajouter</button>
+  <button (click)="handleReset()" type="submit" class="btn btn-info">Tout effacer</button>
+
+</div>

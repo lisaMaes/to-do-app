@@ -1,0 +1,8 @@
+.formAdd{
+  display: flex;
+  margin-bottom: 20px;
+}
+
+label, input{
+  margin-right: 5px;
+}

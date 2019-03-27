@@ -1,0 +1,4 @@
+<div class="itemStyle">
+  <app-checkbox [todo]="todo" (ItemFinished)="handleEndItem($event)"></app-checkbox>
+  <p [ngClass]= "{'cross': todo?.isDone}" >{{ todo?.title | uppercase}}</p>
+</div>
