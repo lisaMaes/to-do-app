@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +9,7 @@ import { TodoContainerComponent } from './todo-container/todo-container.componen
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
+import {HeaderInterceptorService} from "./services/header-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -20,9 +22,13 @@ import { TodoFormComponent } from './todo-form/todo-form.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

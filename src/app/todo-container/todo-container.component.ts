@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {TodoItem} from "../model/TodoItem";
-import _ from "lodash";
 import TodoServices from "../services/TodoServices";
 
 @Component({
@@ -10,7 +9,7 @@ import TodoServices from "../services/TodoServices";
 })
 export class TodoContainerComponent implements OnInit {
 
-  todos:Array<TodoItem> =[];
+  todos:any[] =[];
 
 
 
@@ -28,10 +27,13 @@ export class TodoContainerComponent implements OnInit {
 
   }
 
+
   constructor(private TodoServices: TodoServices) { }
 
-  ngOnInit() {
+  async ngOnInit() {
 
+
+    this.todos= await this.TodoServices.getListTodos();
 
   }
 
