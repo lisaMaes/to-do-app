@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TodoItem} from "../model/TodoItem";
 import _ from "lodash";
+import TodoServices from "../services/TodoServices";
 
 @Component({
   selector: 'app-todo-container',
@@ -10,38 +11,27 @@ import _ from "lodash";
 export class TodoContainerComponent implements OnInit {
 
   todos:Array<TodoItem> =[];
-  i:number;
 
 
-  handleAddTask(title:string){
-    //copie le tableau et la nouvelle entrée
-    this.todos = [...this.todos, new TodoItem(this.i, title, false)];
 
-    this.i++;
+  async handleAddTask(title:string){
+     this.todos = await this.TodoServices.addTask(title);
   }
 
-  handleResetAll(){
-    this.todos = [];
+  async handleResetAll(){
+     this.todos = await this.TodoServices.resetAll();
   }
 
-  handleUpdateTask(todo:TodoItem){
+  async handleUpdateTask(todo:TodoItem){
 
-    //Trouve le todo dans le tableau
-    const taskToUpdate:TodoItem = this.todos.find(item => item.id === todo.id);
-
-    //l'enlève du tableau
-    const arrayWithout:Array<TodoItem> = _.without(this.todos, taskToUpdate);
-
-
-    //recrée un tableau avec le tableau without et l'objet modifié
-    this.todos = [...arrayWithout, {...taskToUpdate, isDone: !taskToUpdate.isDone}].sort((a,b) => a.id - b.id);
+     this.todos = await this.TodoServices.updateTask(todo);
 
   }
 
-  constructor() { }
+  constructor(private TodoServices: TodoServices) { }
 
   ngOnInit() {
-    this.i++;
+
 
   }
 

@@ -12,11 +12,12 @@ export class TodoListComponent implements OnInit {
   todos:Array<TodoItem>;
 
   @Output()
-  TaskUpdated:EventEmitter<TodoItem> = new EventEmitter<TodoItem>();
+  TaskUpdated1:EventEmitter<TodoItem> = new EventEmitter<TodoItem>();
 
 
   handleModifyItem(todo:TodoItem){
-      this.TaskUpdated.emit(todo);
+
+      this.TaskUpdated1.emit(todo);
   }
 
   constructor() { }

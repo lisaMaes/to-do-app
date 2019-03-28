@@ -10,6 +10,6 @@
 
 <ul>
   <li *ngFor="let todo of todos; index as i">
-    <app-todo-item [todo]="todo" (ModifyItem)="handleModifyItem($event)"></app-todo-item>
+    <app-todo-item [todo]="todo" (TaskUpdated)="handleModifyItem($event)"></app-todo-item>
   </li>
 </ul>
